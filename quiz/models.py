@@ -31,6 +31,7 @@ class Answer(models.Model):
 
 class UserQuizResult(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField()
     time_taken = models.IntegerField()  # Time in seconds
     completed_at = models.DateTimeField(auto_now_add=True)

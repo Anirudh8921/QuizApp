@@ -14,6 +14,13 @@ class QuestionSerializer(serializers.ModelSerializer):
         model = Question
         fields = '__all__'        
 
+class QuizSerializer(serializers.ModelSerializer):
+    questions = QuestionSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Quiz
+        fields = '__all__'        
+
 class UserQuizResultSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserQuizResult
@@ -24,9 +31,4 @@ class UserAnswerSerializer(serializers.ModelSerializer):
         model = UserAnswer
         fields = '__all__'    
 
-class QuizSerializer(serializers.ModelSerializer):
-    questions = QuestionSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Quiz
-        fields = '__all__'            
+            
